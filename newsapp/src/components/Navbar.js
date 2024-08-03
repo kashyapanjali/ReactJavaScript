@@ -17,9 +17,6 @@ export class Navbar extends Component {
                         <li className="nav-item">
                         <a className="nav-link" href="/">Link</a>
                         </li>
-                        <li className="nav-item">
-                        <a className="nav-link disabled"href="/" aria-disabled="true">Disabled</a>
-                        </li>
                     </ul>
                 </div>
             </div>
