@@ -1,0 +1,236 @@
+/* Global Styles */
+* {
+  margin: 0;
+  font-family: "Roboto", sans-serif;
+}
+
+/* Container Styles */
+.login {
+  display: flex;
+  gap: 1rem;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(243, 238, 238);
+}
+
+.leftLogin {
+  width: 50%;
+  margin: 2rem;
+  background-color: rgb(81, 81, 239);
+  border-radius: 1rem;
+  height: 120vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.insideLeftContainer {
+  background-color: rgb(46, 46, 243);
+  width: 90%;
+  height: 90%;
+  border-radius: 1rem;
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.baseBox {
+  display: flex;
+  background-color: white;
+  align-items: center;
+  justify-content: center;
+  width: 140px;
+  border-radius: 5rem;
+  padding: 0.6rem;
+  margin-top: 2rem;
+  margin-left: 2rem;
+}
+
+.baseBoxIcon {
+  object-fit: contain;
+  background-color: rgb(42, 132, 165);
+  height: 2em;
+  margin-right: 0.5rem;
+}
+.baseBox > p {
+  font-size: 30px;
+  font-weight: 800;
+}
+
+.h11 {
+  font-weight: bold;
+  font-size: 3rem;
+  color: white;
+  margin: 2rem;
+  padding-top: 2rem;
+  background-color: rgb(46, 46, 243);
+}
+
+/* Container for the button and image */
+.buttomBox {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  gap: 2rem;
+}
+
+/* Button styling */
+.mode {
+  border-radius: 58px;
+  height: 50px;
+  width: 95px;
+  font-weight: 900;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #007bff; /* Example background color */
+  color: white; /* Text color */
+  border: none;
+  margin-left: 2rem;
+}
+
+/* Styling for the image */
+.buttomBoxIcon {
+  height: 100px; /* Adjust height as needed */
+  width: auto; /* Maintain aspect ratio */
+  object-fit: contain; /* Ensure image is contained within its box */
+  background-color: transparent; /* Ensure no background color */
+}
+
+/* Right Login Container */
+.rightlogin {
+  width: 50%;
+  color: black;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 2rem;
+}
+
+.insideRightContainer {
+  gap: 3em;
+  width: 60%;
+  height: 60%;
+}
+
+.signWith {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 35px;
+  gap: 1em;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+/* Additional Sign-In Options */
+.additionalSignWith {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 35px;
+  gap: 1em;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.signWithGoogle,
+.signWithApple {
+  background-color: white;
+}
+
+.signWithGoogle,
+.signWithApple,
+.signWithGitHub,
+.signWithTwitter,
+.signWithLinkedIn,
+.signWithDiscord {
+  width: 45%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.8rem;
+  object-fit: contain;
+}
+
+.googleIcon,
+.appleIcon,
+.icon {
+  height: 60%;
+  background: none;
+  margin-right: 0.5rem;
+}
+
+/* Manual Sign-In Container */
+.signWithManualContainer {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: white;
+  border-radius: 1.2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  max-width: 400px;
+  color: black;
+  font-weight: 1000;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: white;
+}
+
+.forgot-password-info {
+  color: #007bff;
+  background-color: white;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+}
+
+.login_signInButton {
+  width: 100%;
+  padding: 0.75rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 1rem;
+}
+
+.register {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.register span {
+  color: #007bff;
+  cursor: pointer;
+}
+
+/* Media Queries */
+@media (max-width: 704px) {
+  .signWith,
+  .additionalSignWith {
+    flex-direction: row;
+    gap: 0.5;
+  }
+}

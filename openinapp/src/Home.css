@@ -1,0 +1,202 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+}
+
+.sidebar {
+  height: 150%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 200px; /* Initial sidebar width */
+  background-color: #f4f4f4;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  position: relative;
+  transition: width 0.3s ease;
+  padding-left: 40px;
+}
+.logo {
+  display: flex;
+  flex-direction: row;
+}
+
+img {
+  width: 60px;
+  height: 60px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  /* display: flex;
+  align-items: center; */
+  margin-bottom: 50px;
+  font-size: 30px;
+}
+
+/* Home.css or a relevant CSS file */
+/* .icon-large {
+  font-size: 45px !important; /* Forces the size to 24px */
+/* } */
+.main-content {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.sidebar-resizer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 5px;
+  height: 100%;
+  cursor: ew-resize;
+  background-color: #ddd;
+}
+
+.header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 0; /* Ensures it touches the top of the container */
+}
+
+.header-left {
+  font-size: 20px;
+  font-weight: bold;
+  margin-right: auto; /* Pushes the header-right to the far right */
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.notification-icon {
+  width: 20px;
+  height: auto;
+  margin-right: 15px;
+}
+
+.profile-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-upload-input {
+  display: none; /* Hide the file input */
+}
+
+.profile-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.profile-pic {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid #007bff;
+  object-fit: cover;
+}
+
+.upload-box {
+  width: 600px;
+  height: 50%;
+  margin-top: auto; /* Adjust the width of the upload box */
+}
+
+.upload-inner-box {
+  border: 2px dashed #ccc;
+  padding: 70px;
+  text-align: center;
+  margin-bottom: 10px; /* Space between inner box and button */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.excel-icon {
+  width: 50px; /* Adjust icon size */
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.file-input {
+  display: none;
+}
+
+.file-label {
+  display: block;
+  cursor: pointer;
+  color: black;
+  margin-bottom: 10px;
+  text-decoration: none;
+}
+
+.browse-link {
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.upload-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  font-size: 30px;
+  padding: 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.upload-button:hover {
+  background-color: #0056b3;
+}
+
+.details-section {
+  width: 100%;
+  padding: 20px;
+}
+
+.details-section h2 {
+  margin-bottom: 20px;
+}
+
+.details-section table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.details-section th,
+.details-section td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.details-section th {
+  background-color: #f4f4f4;
+}
