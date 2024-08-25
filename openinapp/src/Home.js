@@ -1,8 +1,10 @@
 import React, { useState, useRef } from "react";
 import "./Home.css";
+import { Link } from "react-router-dom";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBell } from "@fortawesome/free-solid-svg-icons";
-import imageIcon from "./imageIcon.jpg";
+import { faCodepen } from "@fortawesome/free-brands-svg-icons";
 
 import {
   faTachometerAlt, // Dashboard icon
@@ -11,7 +13,7 @@ import {
   faCalendarCheck,
   faCalendarAlt,
   faGear,
-} from "@fortawesome/free-solid-svg-icons"; // Import all necessary icons
+} from "@fortawesome/free-solid-svg-icons";
 
 import * as XLSX from "xlsx"; // Import XLSX for reading Excel files
 
@@ -19,6 +21,8 @@ function Home() {
   const [file, setFile] = useState(null);
   const [tableData, setTableData] = useState([]);
   const [isDragging, setIsDragging] = useState(false);
+  const [uploadedFileDetails, setUploadedFileDetails] = useState(null); // Add this line
+
   const sidebarRef = useRef(null);
 
   // Handle file selection
@@ -74,6 +78,15 @@ function Home() {
       const worksheet = workbook.Sheets[sheetName];
       const jsonData = XLSX.utils.sheet_to_json(worksheet);
       setTableData(jsonData);
+
+      //Generate a link to the file(for demo purposes, using URL. createObjectURL)
+      const fileURL = URL.createObjectURL(file);
+      setUploadedFileDetails({
+        name: file.name,
+        type: file.type,
+        size: file.size,
+        url: fileURL,
+      });
     };
     reader.readAsBinaryString(file);
   };
@@ -136,7 +149,10 @@ function Home() {
       <nav className="sidebar" ref={sidebarRef}>
         <ul className="ulList">
           <li className="logo">
-            <img src={imageIcon} />
+            <FontAwesomeIcon
+              icon={faCodepen}
+              style={{ color: "#74C0FC", margin: "0 19px", fontSize: "60px" }}
+            />
             <p>Base</p>
           </li>
           <li>
@@ -186,7 +202,9 @@ function Home() {
       {/* Main Content */}
       <main className="main-content">
         <div className="header">
-          <div className="header-left">Upload CSV</div>
+          <Link to="/" style={{ textDecoration: "none", color: "black" }}>
+            <div className="header-left">Upload CSV</div>
+          </Link>
 
           <div className="header-right">
             <FontAwesomeIcon icon={faBell} className="notification-icon" />
@@ -269,32 +287,34 @@ function Home() {
                   <td>{row["Selected Tags"]}</td>
                 </tr>
               ))}
-
-              {/* demo */}
-              <tr>
-                <td>1</td>
-                <td>
-                  <a href="https://www.google.com/">Link 1</a>
-                </td>
-                <td>Prefix1</td>
-                <td>Tag1</td>
-                <td>Tag1, Tag2</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>
-                  <a href="https://www.google.com/">Link 2</a>
-                </td>
-                <td>Prefix2</td>
-                <td>Tag2</td>
-                <td>Tag3, Tag4</td>
-              </tr>
             </tbody>
           </table>
+
+          {/* demo */}
+          {uploadedFileDetails && (
+            <div className="uploaded-file-details">
+              <h3>Uploaded File Details</h3>
+              <p>
+                <strong>File Name:</strong> {uploadedFileDetails.name}
+              </p>
+              <p>
+                <strong>File Type:</strong> {uploadedFileDetails.type}
+              </p>
+              <p>
+                <strong>File Size:</strong>{" "}
+                {(uploadedFileDetails.size / 1024).toFixed(2)} KB
+              </p>
+              <a
+                href={uploadedFileDetails.url}
+                download={uploadedFileDetails.name}
+              >
+                Download {uploadedFileDetails.name}
+              </a>
+            </div>
+          )}
         </div>
       </main>
     </div>
   );
 }
-
 export default Home;

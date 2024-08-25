@@ -1,6 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./Login.css";
-import imageIcon from "./imageIcon.jpg";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCodepen } from "@fortawesome/free-brands-svg-icons";
+import { faApple } from "@fortawesome/free-brands-svg-icons";
+import girlImage from "./girlImage.png";
 
 export default function Login() {
   return (
@@ -8,15 +12,18 @@ export default function Login() {
       <div className="leftLogin">
         <div className="insideLeftContainer">
           <div className="baseBox">
-            <img src={imageIcon} className="baseBoxIcon" alt="Icon" />
+            <FontAwesomeIcon
+              className="icon-style"
+              icon={faCodepen}
+              style={{ fontSize: "30px" }}
+            />
             <p>Base</p>
           </div>
           <h1 className="h11">Generate detailed reports with just one click</h1>
-
           <div className="buttomBox">
-            <button className="mode">Mode</button>
+            <button className="mode">mode</button>
             <img
-              src="https://cdn.pixabay.com/photo/2016/03/27/22/21/girl-1284400_960_720.png"
+              src={girlImage}
               className="buttomBoxIcon"
               alt="Girl with Camera"
             />
@@ -26,22 +33,23 @@ export default function Login() {
 
       <div className="rightlogin">
         <div className="insideRightContainer">
-          <h1>Sign In</h1>
-          <h4>Sign in to your account</h4>
+          <div className="heading">
+            <h1>Sign In</h1>
+            <h4>Sign in to your account</h4>
+          </div>
           <div className="signWith">
             <div className="signWithGoogle">
               <img
                 src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png"
                 className="googleIcon"
-                alt="googleIcon"
+                alt="Google Icon"
               />
               <p>Sign in with Google</p>
             </div>
             <div className="signWithApple">
-              <img
-                src="https://cdn-icons-png.flaticon.com/512/2991/2991148.png"
-                className="appleIcon"
-                alt="appleIcon"
+              <FontAwesomeIcon
+                icon={faApple}
+                style={{ color: "#97999b", fontSize: "20px" }}
               />
               <p>Sign in with Apple</p>
             </div>
@@ -49,26 +57,28 @@ export default function Login() {
 
           <div className="signWithManualContainer">
             <form>
-              <h5>Email address</h5>
+              <h4>Email address</h4>
               <input type="text" placeholder="Email" />
-              <h5>Password</h5>
+              <h4>Password</h4>
               <input type="password" placeholder="Password" />
 
               {/* Forgot Password Section (non-interactive) */}
-              <p className="forgot-password-info">Forgot Password?</p>
+              <h4 className="forgot-password-info">Forgot Password?</h4>
 
               {/* Sign in Button */}
-              <button type="submit" className="login_signInButton">
-                Sign in
-              </button>
+              <Link to="login">
+                <button type="button" className="login_signInButton">
+                  Sign in
+                </button>
+              </Link>
             </form>
           </div>
 
-          <p className="register">
+          <h4 className="register">
             Don't have an account?<span> Register here</span>
-          </p>
+          </h4>
 
-          {/* Add icon where sign with also GitHub, Twitter, LinkedIn, Discord */}
+          {/* Additional Sign In Options */}
           <div className="additionalSignWith">
             <div className="signWithGitHub">
               <img

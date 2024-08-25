@@ -1,38 +1,40 @@
 /* Global Styles */
+@import url("https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+
 * {
   margin: 0;
+  padding: 0;
   font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif; /* Specific font */
 }
 
 /* Container Styles */
 .login {
   display: flex;
-  gap: 1rem;
   width: 100vw;
-  height: 100vh;
+  /* height: 100vh; */
+  padding: 30px;
+  gap: 8rem;
   background-color: rgb(243, 238, 238);
 }
 
 .leftLogin {
   width: 50%;
-  margin: 2rem;
-  background-color: rgb(81, 81, 239);
+  background-color: rgb(95, 95, 245);
   border-radius: 1rem;
-  height: 120vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  height: 100vh;
+  padding: 3rem;
 }
 
 .insideLeftContainer {
-  background-color: rgb(46, 46, 243);
-  width: 90%;
-  height: 90%;
+  background-color: #888afc;
+  height: 95vh;
   border-radius: 1rem;
-  margin: 2rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 2rem 0rem 0rem 2rem;
+  /* top, right, bottom, left */
 }
 
 .baseBox {
@@ -40,134 +42,101 @@
   background-color: white;
   align-items: center;
   justify-content: center;
-  width: 140px;
   border-radius: 5rem;
-  padding: 0.6rem;
-  margin-top: 2rem;
-  margin-left: 2rem;
+  width: 140px;
+  padding: 12px;
+  gap: 0.5rem;
 }
 
-.baseBoxIcon {
-  object-fit: contain;
-  background-color: rgb(42, 132, 165);
-  height: 2em;
-  margin-right: 0.5rem;
-}
 .baseBox > p {
-  font-size: 30px;
-  font-weight: 800;
+  font-weight: 1000;
+  font-size: 24px;
+}
+
+.icon-style {
+  color: rgb(95, 95, 245);
 }
 
 .h11 {
   font-weight: bold;
   font-size: 3rem;
   color: white;
-  margin: 2rem;
-  padding-top: 2rem;
-  background-color: rgb(46, 46, 243);
+  margin-right: 3rem;
+  margin-top: 25px;
 }
 
-/* Container for the button and image */
 .buttomBox {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: space-between;
-  height: 100%;
-  gap: 2rem;
+  margin-top: 200px;
 }
 
-/* Button styling */
 .mode {
-  border-radius: 58px;
+  width: 90px;
   height: 50px;
-  width: 95px;
-  font-weight: 900;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #007bff; /* Example background color */
-  color: white; /* Text color */
+  background-color: #4c5258;
+  color: white;
   border: none;
-  margin-left: 2rem;
+  border-radius: 25px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 30px;
 }
 
-/* Styling for the image */
 .buttomBoxIcon {
-  height: 100px; /* Adjust height as needed */
-  width: auto; /* Maintain aspect ratio */
-  object-fit: contain; /* Ensure image is contained within its box */
-  background-color: transparent; /* Ensure no background color */
+  margin-left: 200px;
+  margin-bottom: 0;
+  object-fit: contain;
 }
 
 /* Right Login Container */
 .rightlogin {
   width: 50%;
-  color: black;
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-right: 2rem;
 }
 
 .insideRightContainer {
-  gap: 3em;
-  width: 60%;
-  height: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 100px;
+  gap: 1rem;
 }
 
 .signWith {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  height: 35px;
-  gap: 1em;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  align-items: center;
+  gap: 1.5rem;
 }
 
-/* Additional Sign-In Options */
-.additionalSignWith {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  height: 35px;
-  gap: 1em;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+.googleIcon {
+  height: 14px;
+  width: 15px;
 }
 
 .signWithGoogle,
 .signWithApple {
-  background-color: white;
-}
-
-.signWithGoogle,
-.signWithApple,
-.signWithGitHub,
-.signWithTwitter,
-.signWithLinkedIn,
-.signWithDiscord {
-  width: 45%;
   display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  background-color: white;
   border-radius: 0.8rem;
   object-fit: contain;
-}
-
-.googleIcon,
-.appleIcon,
-.icon {
-  height: 60%;
-  background: none;
-  margin-right: 0.5rem;
+  width: 180px;
+  padding: 10px;
+  height: 12px;
+  gap: 0.5rem;
+  font-size: 13px;
+  font-weight: 800;
+  color: rgb(149, 147, 147);
 }
 
 /* Manual Sign-In Container */
 .signWithManualContainer {
-  margin-top: 2rem;
+  margin-top: 1rem;
   padding: 1rem;
   background-color: white;
   border-radius: 1.2rem;
@@ -178,8 +147,6 @@
   align-items: center;
   width: 100%;
   max-width: 400px;
-  color: black;
-  font-weight: 1000;
 }
 
 form {
@@ -190,24 +157,25 @@ form {
   background-color: white;
 }
 
-.forgot-password-info {
-  color: #007bff;
-  background-color: white;
-}
-
 input[type="text"],
 input[type="password"] {
   width: 100%;
+  background-color: rgb(243, 238, 238);
   padding: 0.75rem;
-  border: 1px solid #ccc;
+  /* border: 1px solid #ccc; */
+  border: none;
   border-radius: 0.5rem;
   box-sizing: border-box;
+}
+
+.forgot-password-info {
+  color: rgb(95, 95, 245);
 }
 
 .login_signInButton {
   width: 100%;
   padding: 0.75rem;
-  background-color: #007bff;
+  background-color: rgb(95, 95, 245);
   color: white;
   border: none;
   border-radius: 0.5rem;
@@ -217,20 +185,40 @@ input[type="password"] {
 }
 
 .register {
-  text-align: center;
-  margin-top: 2rem;
+  margin-left: 11%;
+}
+.register span {
+  color: rgb(95, 95, 245);
+  cursor: pointer;
 }
 
-.register span {
-  color: #007bff;
-  cursor: pointer;
+.additionalSignWith {
+  display: flex;
+  flex-direction: row;
+  margin-left: 11%;
+  gap: 0.5em;
+  margin-top: 1rem;
+}
+
+.signWithGitHub,
+.signWithTwitter,
+.signWithLinkedIn,
+.signWithDiscord {
+  width: 12%;
+  object-fit: contain;
+  margin-top: 5rem;
+}
+
+.icon {
+  height: 20px;
+  width: 30px;
+  display: block;
 }
 
 /* Media Queries */
 @media (max-width: 704px) {
-  .signWith,
-  .additionalSignWith {
-    flex-direction: row;
+  .login {
+    flex-direction: column;
     gap: 0.5;
   }
 }
