@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .login_logo {
@@ -46,6 +47,47 @@
   font-size: 12px;
 }
 
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+.password-input-container {
+  position: relative;
+  width: 100%;
+}
+
+.password-input-container input {
+  width: 100%;
+  padding: 10px 40px 10px 10px; /* Add padding on the right to make space for the icon */
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px; /* Adjust based on your design */
+}
+
+.password-input-container input::after {
+  content: "";
+  position: absolute;
+  right: 10px; /* Adjust based on your design */
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 16px; /* Adjust based on your design */
+  color: #888;
+  display: none; /* Initially hide the icon */
+}
+
+.password-input-container input.password-visible::after {
+  content: "👁"; /* Unicode character for an eye icon, or use a FontAwesome icon */
+  display: block;
+}
+
+.password-input-container input.password-hidden::after {
+  content: "👁️"; /* Unicode character for an eye slash icon */
+  display: block;
+}
+
 .login_signInButton {
   background: #f0c14b;
   border-radius: 2px;
@@ -63,4 +105,16 @@
   border: 1px solid;
   margin-top: 10px;
   border-color: darkgray;
+}
+
+.additionalSignWith {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  margin-top: 8px;
+}
+.Icon {
+  height: 25px;
+  cursor: pointer;
 }

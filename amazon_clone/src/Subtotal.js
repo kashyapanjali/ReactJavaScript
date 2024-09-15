@@ -24,7 +24,7 @@ function Subtotal() {
         value={getBasketTotall(basket)} // Calculate the total
         displayType={"text"}
         thousandSeperator={true}
-        prefit={"$"}
+        prefit={"₹"}
       />
       <button>Proceed to Checkout</button>
     </div>

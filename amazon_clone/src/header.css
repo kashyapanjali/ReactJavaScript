@@ -67,3 +67,9 @@
   margin-right: 10x;
   color: white;
 }
+
+.header_option span,
+p {
+  text-decoration: none;
+  color: inherit; /* Optional: ensures the text color is inherited */
+}

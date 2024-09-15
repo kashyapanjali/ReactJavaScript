@@ -63,6 +63,14 @@ function Home() {
             rating={5}
             image="https://m.media-amazon.com/images/I/711uu1wZZ9L._AC_SL1500_.jpg"
           />
+
+          <Product
+            id="49538100"
+            title="Dell 27-Inch UltraSharp U2720Q 4K Monitor"
+            price={54999}
+            rating={4}
+            image="https://m.media-amazon.com/images/I/41jwu7JrOYL._SX300_SY300_QL70_FMwebp_.jpg"
+          />
         </div>
       </div>
     </div>
