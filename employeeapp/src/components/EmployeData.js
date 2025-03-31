@@ -14,10 +14,24 @@ export default function EmployeData() {
 	const [isUpdate, setIsUpdate] = useState(false);
 	const [searchTerm, setSearchTerm] = useState("");
 	const [selectedFilter, setSelectedFilter] = useState("all");
+	const [userRole, setUserRole] = useState('');
+
+	const ADMIN_EMAILS = [
+		'anjalikashyap9608@gmail.com',
+		'anjali.official7061@gmail.com'
+	];
 
 	useEffect(() => {
 		setData(EmployeDetails);
+		// Get user role from localStorage
+		const role = localStorage.getItem('userRole');
+		setUserRole(role);
 	}, []);
+
+	// Example of role-based access control
+	const canEdit = userRole === 'admin';
+	const canDelete = userRole === 'admin';
+	const canAdd = userRole === 'admin';
 
 	//handle the edit of data
 	const handleEdit = (id) => {
@@ -139,101 +153,103 @@ export default function EmployeData() {
 						<h4 className="mb-0">{isUpdate ? "Update Employee" : "Add New Employee"}</h4>
 					</div>
 					<div className="card-body">
-						<form onSubmit={isUpdate ? handleUpdate : handleSave}>
-							<div className="row g-3">
-								<div className="col-md-6 col-lg-3">
-									<label className="form-label">First Name*</label>
-									<input
-										type="text"
-										className="form-control"
-										placeholder="Enter First Name"
-										onChange={(e) => setFirstName(e.target.value)}
-										value={firstName}
-										required
-									/>
-								</div>
-								<div className="col-md-6 col-lg-3">
-									<label className="form-label">Last Name*</label>
-									<input
-										type="text"
-										className="form-control"
-										placeholder="Enter Last Name"
-										onChange={(e) => setLastName(e.target.value)}
-										value={lastName}
-										required
-									/>
-								</div>
-								<div className="col-md-6 col-lg-2">
-									<label className="form-label">Age*</label>
-									<input
-										type="number"
-										className="form-control"
-										placeholder="Enter Age"
-										onChange={(e) => setAge(e.target.value)}
-										value={age}
-										min="18"
-										required
-									/>
-								</div>
-								<div className="col-md-6 col-lg-2">
-									<label className="form-label">Role*</label>
-									<input
-										type="text"
-										className="form-control"
-										placeholder="Enter Role"
-										onChange={(e) => setRole(e.target.value)}
-										value={role}
-										required
-									/>
-								</div>
-								<div className="col-md-6 col-lg-2">
-									<label className="form-label">Contact</label>
-									<input
-										type="text"
-										className="form-control"
-										placeholder="Enter Contact"
-										onChange={(e) => setContact(e.target.value)}
-										value={contact}
-									/>
-								</div>
-								<div className="col-md-6 col-lg-4">
-									<label className="form-label">Profile Image</label>
-									<div className="input-group">
+						{canAdd && (
+							<form onSubmit={isUpdate ? handleUpdate : handleSave}>
+								<div className="row g-3">
+									<div className="col-md-6 col-lg-3">
+										<label className="form-label">First Name*</label>
 										<input
-											type="file"
+											type="text"
 											className="form-control"
-											onChange={handleFileChange}
-											accept="image/*"
+											placeholder="Enter First Name"
+											onChange={(e) => setFirstName(e.target.value)}
+											value={firstName}
+											required
 										/>
 									</div>
-								</div>
-								<div className="col-md-6 col-lg-2">
-									{profilePreview && (
-										<img 
-											src={profilePreview} 
-											alt="Preview" 
-											className="img-thumbnail mt-2" 
-											style={{ maxHeight: "80px" }} 
+									<div className="col-md-6 col-lg-3">
+										<label className="form-label">Last Name*</label>
+										<input
+											type="text"
+											className="form-control"
+											placeholder="Enter Last Name"
+											onChange={(e) => setLastName(e.target.value)}
+											value={lastName}
+											required
 										/>
-									)}
+									</div>
+									<div className="col-md-6 col-lg-2">
+										<label className="form-label">Age*</label>
+										<input
+											type="number"
+											className="form-control"
+											placeholder="Enter Age"
+											onChange={(e) => setAge(e.target.value)}
+											value={age}
+											min="18"
+											required
+										/>
+									</div>
+									<div className="col-md-6 col-lg-2">
+										<label className="form-label">Role*</label>
+										<input
+											type="text"
+											className="form-control"
+											placeholder="Enter Role"
+											onChange={(e) => setRole(e.target.value)}
+											value={role}
+											required
+										/>
+									</div>
+									<div className="col-md-6 col-lg-2">
+										<label className="form-label">Contact</label>
+										<input
+											type="text"
+											className="form-control"
+											placeholder="Enter Contact"
+											onChange={(e) => setContact(e.target.value)}
+											value={contact}
+										/>
+									</div>
+									<div className="col-md-6 col-lg-4">
+										<label className="form-label">Profile Image</label>
+										<div className="input-group">
+											<input
+												type="file"
+												className="form-control"
+												onChange={handleFileChange}
+												accept="image/*"
+											/>
+										</div>
+									</div>
+									<div className="col-md-6 col-lg-2">
+										{profilePreview && (
+											<img 
+												src={profilePreview} 
+												alt="Preview" 
+												className="img-thumbnail mt-2" 
+												style={{ maxHeight: "80px" }} 
+											/>
+										)}
+									</div>
+									<div className="col-12 text-center mt-3">
+										<button
+											type="submit"
+											className={`btn ${isUpdate ? 'btn-warning' : 'btn-primary'} me-2`}
+										>
+											{isUpdate ? "Update" : "Save"}
+										</button>
+										<button
+											type="button"
+											className="btn btn-secondary"
+											onClick={handleClear}
+										>
+											Clear
+										</button>
+									</div>
 								</div>
-								<div className="col-12 text-center mt-3">
-									<button
-										type="submit"
-										className={`btn ${isUpdate ? 'btn-warning' : 'btn-primary'} me-2`}
-									>
-										{isUpdate ? "Update" : "Save"}
-									</button>
-									<button
-										type="button"
-										className="btn btn-secondary"
-										onClick={handleClear}
-									>
-										Clear
-									</button>
-								</div>
-							</div>
-						</form>
+							</form>
+						)}
 					</div>
 				</div>
 
@@ -276,6 +292,11 @@ export default function EmployeData() {
 				<div className="card shadow-lg">
 					<div className="card-header bg-primary text-white">
 						<h4 className="mb-0">Employee List</h4>
+						{!canEdit && (
+							<small className="text-muted">
+								You are in read-only mode
+							</small>
+						)}
 					</div>
 					<div className="card-body p-0">
 						<div className="table-responsive">
@@ -327,18 +348,22 @@ export default function EmployeData() {
 													)}
 												</td>
 												<td>
-													<button
-														className="btn btn-sm btn-outline-primary me-1"
-														onClick={() => handleEdit(item.id)}
-													>
-														<i className="bi bi-pencil"></i>
-													</button>
-													<button
-														className="btn btn-sm btn-outline-danger"
-														onClick={() => handleDelete(item.id)}
-													>
-														<i className="bi bi-trash"></i>
-													</button>
+													{canEdit && (
+														<button
+															className="btn btn-warning btn-sm me-2"
+															onClick={() => handleEdit(item.id)}
+														>
+															Edit
+														</button>
+													)}
+													{canDelete && (
+														<button
+															className="btn btn-danger btn-sm"
+															onClick={() => handleDelete(item.id)}
+														>
+															Delete
+														</button>
+													)}
 												</td>
 											</tr>
 										))
