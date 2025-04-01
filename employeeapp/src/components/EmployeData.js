@@ -119,24 +119,25 @@ export default function EmployeData() {
 			return;
 		}
 
-		const newEmployee = {
-			employeeId,
-			firstName,
-			lastName,
-			age: parseInt(age),
-			role,
-			contact,
-			profile: profilePreview || "",
-		};
+		// Create a FormData object to send files
+		const formData = new FormData();
+		formData.append("employeeId", employeeId);
+		formData.append("firstName", firstName);
+		formData.append("lastName", lastName);
+		formData.append("age", age);
+		formData.append("role", role);
+		formData.append("contact", contact);
+		if (profile) {
+			formData.append("profile", profile); // Append image file
+		}
 
 		try {
 			const response = await fetch("http://localhost:5000/api/employees", {
 				method: "POST",
 				headers: {
-					"Content-Type": "application/json",
-					Authorization: `Bearer ${authToken}`,
+					Authorization: `Bearer ${authToken}`, // No need for 'Content-Type', fetch will auto set it for FormData
 				},
-				body: JSON.stringify(newEmployee),
+				body: formData,
 			});
 			const json = await response.json();
 			if (json.success) {
@@ -154,14 +155,15 @@ export default function EmployeData() {
 	// Update employee (PUT)
 	const handleUpdate = async (e) => {
 		e.preventDefault();
-		const updatedEmployee = {
-			firstName,
-			lastName,
-			age: parseInt(age),
-			role,
-			contact,
-			profile: profilePreview || "",
-		};
+		const formData = new FormData();
+		formData.append("firstName", firstName);
+		formData.append("lastName", lastName);
+		formData.append("age", age);
+		formData.append("role", role);
+		formData.append("contact", contact);
+		if (profile) {
+			formData.append("profile", profile);
+		}
 
 		try {
 			const response = await fetch(
@@ -169,12 +171,12 @@ export default function EmployeData() {
 				{
 					method: "PUT",
 					headers: {
-						"Content-Type": "application/json",
-						Authorization: `Bearer ${authToken}`,
+						Authorization: `Bearer ${authToken}`, // No Content-Type needed
 					},
-					body: JSON.stringify(updatedEmployee),
+					body: formData,
 				}
 			);
+
 			const json = await response.json();
 			if (json.success) {
 				fetchEmployees();
