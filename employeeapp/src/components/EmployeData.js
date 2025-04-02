@@ -412,7 +412,7 @@ export default function EmployeData() {
 												<td>
 													{item.profile ?
 														<img
-															src={item.profile}
+															src={`http://localhost:5000${item.profile}`} // Updated to include the full URL
 															alt='Profile'
 															className='rounded-circle'
 															width='40'
