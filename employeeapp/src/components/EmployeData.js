@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 
 export default function EmployeData() {
 	const [data, setData] = useState([]);
@@ -17,16 +17,9 @@ export default function EmployeData() {
 	const [userRole, setUserRole] = useState("");
 
 	// On mount, load employees from API and get user role from localStorage
-	useEffect(() => {
-		fetchEmployees();
-		const role = localStorage.getItem("userRole");
-		setUserRole(role);
-	}, []);
-
 	const authToken = localStorage.getItem("authToken");
 
-	// Fetch all employees from backend
-	const fetchEmployees = async () => {
+	const fetchEmployees = useCallback(async () => {
 		try {
 			const response = await fetch("http://localhost:5000/api/employees", {
 				headers: {
@@ -44,11 +37,18 @@ export default function EmployeData() {
 			console.error("Error fetching employees:", error);
 			alert("Error fetching employees");
 		}
-	};
+	}, [authToken]); // Added authToken as dependency
+
+	//Now it's safe to include fetchEmployees in the dependency array
+	useEffect(() => {
+		fetchEmployees();
+		const role = localStorage.getItem("userRole");
+		setUserRole(role);
+	}, [fetchEmployees]);
 
 	// Role based access control
 	const canEdit = userRole === "admin";
-	const canDelete = userRole === "admin";
+	// const canDelete = userRole === "admin";
 	const canAdd = userRole === "admin";
 
 	// Edit an employee: populate form fields with employee data

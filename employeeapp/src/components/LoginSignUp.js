@@ -38,14 +38,15 @@ export default function LoginSignUp() {
 	};
 
 	return (
-		<div className='min-vh-100 d-flex justify-content-center align-items-center bg-light'>
+		<div
+			className='min-vh-100 d-flex justify-content-center align-items-center bg-light'
+			style={{ marginTop: "-50px" }}>
 			<div className='container'>
 				<div className='row justify-content-center'>
 					<div className='col-md-6 col-lg-4'>
 						<div className='card border-0 shadow rounded-3 overflow-hidden'>
 							<div className='bg-primary text-white text-center py-2'>
-								<h5 className='fw-bold mb-1'>EmployeeBundle</h5>
-								<small>Employee Management</small>
+								<small>Employee Management System</small>
 							</div>
 
 							<div className='card-body p-3 p-md-3'>
