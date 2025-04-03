@@ -1,70 +1,103 @@
-# Getting Started with Create React App
+# Employee Management System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Overview
 
-## Available Scripts
+This project is a **CRUD-based Employee Management System** with **Admin User Functionality** built using **MongoDB, Express.js, React.js, and Node.js (MERN Stack)**. It allows admins to manage employee records, including adding, updating, deleting, and viewing employee details.
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **User Authentication**: Google OAuth for secure login.
+- **Admin Panel**: Only admins can perform CRUD operations.
+- **Employee Management**: Add, update, delete, and view employee data.
+- **Profile Image Upload**: Store employee profile pictures in MongoDB.
+- **JWT Authentication**: Secure API endpoints with tokens.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Tech Stack
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **Frontend**: React.js (with React Router)
+- **Backend**: Node.js, Express.js
+- **Database**: MongoDB (Mongoose ODM)
+- **Authentication**: Google OAuth 2.0, JWT
+- **Hosting**: Render (Backend), Vercel (Frontend)
 
-### `npm test`
+## Installation & Setup
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 1. Clone the Repository
 
-### `npm run build`
+```sh
+git clone https://github.com/kashyapanjali/ReactJavaScript.git
+cd https://github.com/kashyapanjali/ReactJavaScript/tree/main/employeeapp
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 2. Set Up Environment Variables
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Create a `.env` file in both `backend` and `frontend` directories.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### **Backend (.env)**
 
-### `npm run eject`
+```env
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_CLIENT_SECRET=your_google_client_secret
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### 3. Install Dependencies
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+#### **Backend**
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+```sh
+cd backend
+npm install
+```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+#### **Frontend**
 
-## Learn More
+```sh
+cd frontend
+npm install
+```
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### 4. Run the Application
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### **Backend**
 
-### Code Splitting
+```sh
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+#### **Frontend**
 
-### Analyzing the Bundle Size
+```sh
+npm start
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## API Endpoints
 
-### Making a Progressive Web App
+### **Authentication Routes**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+- `POST /auth/google` - Google OAuth login
+- `POST /auth/logout` - Logout user
 
-### Advanced Configuration
+### **Employee CRUD Routes**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+- `GET /employees` - Get all employees
+- `GET /employees/:id` - Get employee by ID
+- `POST /employees` - Add new employee (Admin only)
+- `PUT /employees/:id` - Update employee details (Admin only)
+- `DELETE /employees/:id` - Delete employee (Admin only)
 
-### Deployment
+## Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+- **Backend**: Deployed on Render
+- **Frontend**: Deploy on Netlify
 
-### `npm run build` fails to minify
+## Admin Access
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Only admin users can modify employee records. Admin emails are stored in `.env`:
+
+```env
+ADMIN_EMAILS=anjalikashyap9608@gmail.com,anjali.official7061@gmail.com
+```
+
+**Developed by Anjali Kashyap**
