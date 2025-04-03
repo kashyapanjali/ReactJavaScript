@@ -21,12 +21,15 @@ export default function EmployeData() {
 
 	const fetchEmployees = useCallback(async () => {
 		try {
-			const response = await fetch("http://localhost:5000/api/employees", {
-				headers: {
-					"Content-Type": "application/json",
-					Authorization: `Bearer ${authToken}`,
-				},
-			});
+			const response = await fetch(
+				"https://employeebackend-qarh.onrender.com/api/employees",
+				{
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Bearer ${authToken}`,
+					},
+				}
+			);
 			const json = await response.json();
 			if (json.success) {
 				setData(json.data);
@@ -69,7 +72,7 @@ export default function EmployeData() {
 		if (window.confirm("Are you sure you want to delete this employee?")) {
 			try {
 				const response = await fetch(
-					`http://localhost:5000/api/employees/${empId}`,
+					`https://employeebackend-qarh.onrender.com/api/employees/${empId}`,
 					{
 						method: "DELETE",
 						headers: {
@@ -132,13 +135,16 @@ export default function EmployeData() {
 		}
 
 		try {
-			const response = await fetch("http://localhost:5000/api/employees", {
-				method: "POST",
-				headers: {
-					Authorization: `Bearer ${authToken}`, // No need for 'Content-Type', fetch will auto set it for FormData
-				},
-				body: formData,
-			});
+			const response = await fetch(
+				"https://employeebackend-qarh.onrender.com/api/employees",
+				{
+					method: "POST",
+					headers: {
+						Authorization: `Bearer ${authToken}`, // No need for 'Content-Type', fetch will auto set it for FormData
+					},
+					body: formData,
+				}
+			);
 			const json = await response.json();
 			if (json.success) {
 				fetchEmployees();
@@ -167,7 +173,7 @@ export default function EmployeData() {
 
 		try {
 			const response = await fetch(
-				`http://localhost:5000/api/employees/${id}`,
+				`https://employeebackend-qarh.onrender.com/api/employees/${id}`,
 				{
 					method: "PUT",
 					headers: {
@@ -412,7 +418,7 @@ export default function EmployeData() {
 												<td>
 													{item.profile ?
 														<img
-															src={`http://localhost:5000${item.profile}`} // Updated to include the full URL
+															src={`https://employeebackend-qarh.onrender.com${item.profile}`} // Updated to include the full URL
 															alt='Profile'
 															className='rounded-circle'
 															width='40'
